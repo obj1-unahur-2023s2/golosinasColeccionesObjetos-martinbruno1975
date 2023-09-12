@@ -98,17 +98,15 @@ object golosinaBaniada {
 }
 
 object pastillaTuttiFrutti {
-	var peso = 5
 	var property contieneGluten
 	const sabor = ["frutilla","chocolate","naranja"]
+	var contador = 0
 	
-	method peso() = peso
-	method precio() = if !contieneGluten {7} else {10}
-	method sabor() {
-		
-	} 
+	method peso() = 5
+	method precio() = if (!contieneGluten) {7} else {10}
+	method sabor() = sabor.get(contador % 3)
 	
 	method recibirMordisco(){
-		
+		contador += 1
 	}
 }

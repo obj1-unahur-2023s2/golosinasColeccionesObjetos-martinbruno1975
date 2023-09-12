@@ -1,5 +1,7 @@
+import golosinas.*
+
 object mariano {
-	var golosinas = []
+	const golosinas = []
 	
 	method comprar(unaGolosina) {
 		golosinas.add(unaGolosina)
@@ -20,7 +22,18 @@ object mariano {
 	method golosinaDeSabor(unSabor) = golosinas.find({g => g.sabor() == unSabor})
 	method golosinasDeSabor(unSabor) = golosinas.filter({g => g.sabor() == unSabor})
 	
-	method sabores(){}
+	method buscarGolosinas(closure){
+		return golosinas.filter(closure)
+		/* mariano.buscarGolosinas({g => g.peso() >= 5})*/
+	}
 	
-	method golosinaMasCara() {}
+	method sabores() = golosinas.map({g=>g.sabor()}).asSet()
+	
+	method golosinaMasCara() {
+		return golosinas.max({g=>g.precio()})
+	}
+	
+	method gustosFaltantes(todosLosSabores){
+		return todosLosSabores.difference(self.sabores())
+	}
 }
